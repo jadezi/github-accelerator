@@ -1,9 +1,9 @@
 // ==UserScript==
 // @icon         https://github.githubassets.com/favicon.ico
-// @name         Github 国内加速
+// @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.0.0
-// @description  GitHub加速
+// @version      1.0.1
+// @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
 // @match        *://github.com/*
