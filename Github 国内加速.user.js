@@ -47,6 +47,7 @@
     <div class="collapse multi-collapse" id="collapseExample">
     <div class="user-card user-card-body">
     <div class="user-alert user-alert-warning" role="alert">clone、depth命令的插入可手动编辑代码关闭</div>
+    <div class="user-alert user-alert-danger" style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;" role="alert">镜像地址请不要登陆自己的账户，造成损失本人概不负责</div>
     <div class="user-input-group user-mb-3">
     <div class="user-input-group-prepend"><span class="user-input-group-text" id="inputGroup-sizing-default">快速克隆1:</span></div>
     <input id="clone_case_1" type="text" value="${clone_utl1}" data-autoselect="" class="user-form-control" aria-label="将此存储库克隆到 ${clone_utl1}" readonly aria-describedby="inputGroup-sizing-default">
