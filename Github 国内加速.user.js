@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.0.2
+// @version      1.0.4
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
@@ -22,7 +22,7 @@
 
     var loca = window.location.href;
     var mirror_url1 = 'https://' + 'github.com.cnpmjs.org';
-    var mirror_url2 = 'http://' + 'github-mirror.bugkiller.org';
+    var mirror_url2 = 'https://' + 'git.fastgit.org';
     var mirror_url3 = 'https://' + 'github.wuyanzheshui.workers.dev';
     var str1 = '';
 
@@ -80,17 +80,17 @@
     $('.release-entry').each(function () {
         $(this).find('.d-flex.Box-body>a').each(function () {
             var href = $(this).attr('href');
-            var url1 = mirror_url2 + href;
+            var url1 = 'javascript:volid(0);'
             var url2 = mirror_url3 + href;
-            var div1 = `<div class="user_download" style="display: flex;justify-content: flex-end;flex-grow: 1;"><div><a style="padding:4px"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2</a></div></div>`
+            var div1 = `<div class="user_download" style="display: flex;justify-content: flex-end;flex-grow: 1;"><div><a style="padding:4px;display:none"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
 
             $(this).after(div1);
         });
         $(this).find('.d-block.Box-body>a').each(function () {
             var href = $(this).attr('href');
-            var url1 = mirror_url2 + href;
+            var url1 = 'javascript:volid(0);'
             var url2 = mirror_url3 + href;
-            var div1 = `<div class="user_download" style="display: flex;"><div><a style="padding:4px"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2</a></div></div>`
+            var div1 = `<div class="user_download" style="display: flex;"><div><a style="padding:4px;display:none"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
 
             $(this).after(div1);
         });
