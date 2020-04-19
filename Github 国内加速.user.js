@@ -22,7 +22,7 @@
 
     var loca = window.location.href;
     var mirror_url1 = 'https://' + 'github.com.cnpmjs.org';
-    var mirror_url2 = 'https://' + 'git.fastgit.org';
+    var mirror_url2 = 'https://' + 'hub.fastgit.org';
     var mirror_url3 = 'https://' + 'github.wuyanzheshui.workers.dev';
     var str1 = '';
 
