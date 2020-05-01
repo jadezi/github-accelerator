@@ -24,7 +24,7 @@
     var mirror_url1 = 'https://' + 'github.com.cnpmjs.org';
     var mirror_url2 = 'https://' + 'hub.fastgit.org';
     var mirror_url3 = 'https://' + 'github.wuyanzheshui.workers.dev';
-    var download_url1 = "https://release.fastgit.org";
+    var download_url1 = "https://download.fastgit.org";
     var str1 = '';
 
     if (clone) {
