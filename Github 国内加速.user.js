@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.0.6
+// @version      1.0.7
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
@@ -97,7 +97,7 @@
             $(this).after(div1);
         });
     });
-    $('.get-repo-modal-options').each(function () {
+    $('.mt-2.d-flex').each(function () {
         var url1 = mirror_url3 +'/'+a[3]+'/'+a[4]+ '/archive/master.zip';
         var span1 = `<a class="btn btn-outline get-repo-btn btn-block" rel="nofollow" href="${url1}">Fast Download ZIP</a>`;
 
