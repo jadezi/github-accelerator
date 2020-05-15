@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.0.7
+// @version      1.0.8
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
@@ -19,13 +19,16 @@
     // var clone = false;
     var depth = true;
     // var depth = false;
+    var mirror = true;
+    // var mirror = false;
+    var hide = false;
 
-    var loca = window.location.href;
-    var mirror_url1 = 'https://' + 'github.com.cnpmjs.org';
-    var mirror_url2 = 'https://' + 'hub.fastgit.org';
-    var mirror_url3 = 'https://' + 'github.wuyanzheshui.workers.dev';
+    var location = window.location.href;
+    var mirror_url1 = "https://" + "github.com.cnpmjs.org";
+    var mirror_url2 = "https://" + "hub.fastgit.org";
+    var mirror_url3 = "https://" + "github.wuyanzheshui.workers.dev";
     var download_url1 = "https://download.fastgit.org";
-    var str1 = '';
+    var str1 = "";
 
     if (clone) {
         str1 += "git clone ";
@@ -34,8 +37,8 @@
         }
     }
 
-    var a = loca.split("/");
-    var str2 = '/' + a[3] + '/' + a[4] + '.git';
+    var a = location.split("/");
+    var str2 = "/" + a[3] + "/" + a[4] + ".git";
     var clone_utl1 = str1 + mirror_url1 + str2;
     var clone_utl2 = str1 + mirror_url2 + str2;
     var str3 = window.location.pathname;
@@ -44,8 +47,8 @@
     var web_url3 = mirror_url3 + str3;
     var info = `
     <div class="user-ment">
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">镜像网址</button>
-    <div class="collapse multi-collapse" id="collapseExample">
+    <button class="btn btn-primary" type="button" id="mirror-btn">镜像网址</button>
+    <div class="collapse multi-collapse" id="collapse">
     <div class="user-card user-card-body">
     <div class="user-alert user-alert-warning" role="alert">clone、depth命令的插入可手动编辑代码关闭</div>
     <div class="user-alert user-alert-danger" style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;" role="alert">镜像地址请不要登陆自己的账户，造成损失本人概不负责</div>
@@ -78,18 +81,18 @@
     </div>
     </div>`;
 
-    $('.repository-content').prepend(info);
-    $('.release-entry').each(function () {
-        $(this).find('.d-flex.Box-body>a').each(function () {
-            var href = $(this).attr('href');
+    $(".repository-content").prepend(info);
+    $(".Box.Box--condensed").each(function () {
+        $(this).find(".d-flex.Box-body>a").each(function () {
+            var href = $(this).attr("href");
             var url1 = download_url1 + href;
             var url2 = mirror_url3 + href;
             var div1 = `<div class="user_download" style="display: flex;justify-content: flex-end;flex-grow: 1;"><div><a style="padding:4px;"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
 
             $(this).after(div1);
         });
-        $(this).find('.d-block.Box-body>a').each(function () {
-            var href = $(this).attr('href');
+        $(this).find(".d-block.Box-body>a").each(function () {
+            var href = $(this).attr("href");
             var url1 = download_url1 + href;
             var url2 = mirror_url3 + href;
             var div1 = `<div class="user_download" style="display: flex;"><div><a style="padding:4px;"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
@@ -97,20 +100,36 @@
             $(this).after(div1);
         });
     });
-    $('.mt-2.d-flex').each(function () {
-        var url1 = mirror_url3 +'/'+a[3]+'/'+a[4]+ '/archive/master.zip';
+    $(".mt-2.d-flex").each(function () {
+        var url1 = mirror_url3 +"/"+a[3]+"/"+a[4]+ "/archive/master.zip";
         var span1 = `<a class="btn btn-outline get-repo-btn btn-block" rel="nofollow" href="${url1}">Fast Download ZIP</a>`;
 
         $(this).after(span1);
     });
     // 复制按钮
-    $("#button-copy1").on('click',function(){
-        GM_setClipboard($('#clone_case_1').val())
+    $("#button-copy1").on("click",function(){
+        GM_setClipboard($("#clone_case_1").val())
         alert("复制成功")
     })
-    $("#button-copy2").on('click',function(){
-        GM_setClipboard($('#clone_case_2').val())
+    $("#button-copy2").on("click",function(){
+        GM_setClipboard($("#clone_case_2").val())
         alert("复制成功")
     })
-    GM_addStyle(GM_getResourceText('mycss'));
+    // 隐藏面板
+    $("#mirror-btn").on("click", function () {
+        if (!hide) {
+            $("#collapse").hide();
+        } else {
+            $("#collapse").show();
+        }
+        hide = !hide;
+    })
+    function init(){
+        if (!mirror) {
+            $("#collapse").hide()
+        }
+    }
+    // 初始化面板
+    init()
+    GM_addStyle(GM_getResourceText("mycss"));
 })();

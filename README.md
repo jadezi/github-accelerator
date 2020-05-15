@@ -4,6 +4,10 @@
 
 本脚本在 [GitHub 镜像加速下载](https://greasyfork.org/zh-CN/scripts/397419-github-%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD) 脚本的基础上做了些修改。
 
+## v1.0.8
+
+- 修复release下载页面，快速下载按钮消失
+
 ## v1.0.7
 
 - 修复Fast Download ZIP 按钮失效
