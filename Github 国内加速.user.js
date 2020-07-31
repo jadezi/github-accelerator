@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.1.1
+// @version      1.1.2
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
@@ -58,7 +58,7 @@
     <div class="user-input-group-append">
     <button class="btn btn-outline-secondary" type="button" id="button-copy1"  data-container="body" data-toggle="popover" data-placement="bottom" data-content="复制成功">复制</button>
     </div>
-    <a type="button"  href="${web_url1}" class="btn">快速浏览1</a>
+    <button class="btn btn-outline-secondary" type="button" id="quickViewOne" href="${web_url1}" class="btn">快速浏览1</button>
     </div>
     <div class="user-input-group user-mb-3">
     <div class="user-input-group-prepend">
@@ -68,14 +68,14 @@
     <div class="user-input-group-append">
     <button class="btn btn-outline-secondary" type="button" id="button-copy2"  data-container="body" data-toggle="popover" data-placement="bottom" data-content="复制成功">复制</button>
     </div>
-    <a type="button" href="${web_url2}" class="btn">快速浏览2</a>
+    <button class="btn btn-outline-secondary" type="button" id="quickViewOther" class="btn">快速浏览2</button>
     </div>
     <div class="user-input-group user-mb-3">
     <div class="user-input-group-prepend">
     <span class="user-input-group-text" id="inputGroup-sizing-default">快速克隆3:</span>
     </div>
     <input type="text" data-autoselect="" class="user-form-control" aria-describedby="inputGroup-sizing-default" value="不支持clone,直接跳转--->" aria-label="" readonly="" >
-    <a type="button" href="${web_url3}" class="btn">快速浏览3</a>
+    <button type="button" id="quickViewAnthor" class="btn">快速浏览3</button>
     </div>
     </div>
     </div>
@@ -100,9 +100,9 @@
             $(this).after(div1);
         });
     });
-    $(".mt-2.d-flex").each(function () {
+    $(".get-repo-modal.dropdown-menu ul li:last").each(function () {
         var url1 = mirror_url3 +"/"+a[3]+"/"+a[4]+ "/archive/master.zip";
-        var span1 = `<a class="btn btn-outline get-repo-btn btn-block" rel="nofollow" href="${url1}">Fast Download ZIP</a>`;
+        var span1 = `<li class="Box-row Box-row--hover-gray p-0"><a class="d-flex flex-items-center text-gray-dark text-bold no-underline p-3" rel="nofollow" href="${url1}">Fast Download ZIP</a></li>`;
 
         $(this).after(span1);
     });
@@ -114,6 +114,16 @@
     $("#button-copy2").on("click",function(){
         GM_setClipboard($("#clone_case_2").val())
         alert("复制成功")
+    })
+    //页面跳转
+    $("#quickViewOne").on("click",function(){
+        window.location.href = web_url1
+    });
+    $("#quickViewOther").on("click",function(){
+        window.location.href = web_url2
+    })
+    $("#quickViewAnthor").on("click",function(){
+        window.location.href = web_url3
     })
     // 隐藏面板
     $("#mirror-btn").on("click", function () {
