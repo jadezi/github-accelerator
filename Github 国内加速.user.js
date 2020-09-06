@@ -38,7 +38,8 @@
     }
 
     var a = location.split("/");
-    var str2 = "/" + a[3] + "/" + a[4] + ".git";
+    var b = a[5] === "wiki" ? ".wiki" : "";
+    var str2 = "/" + a[3] + "/" + a[4] + b + ".git";
     var clone_utl1 = str1 + mirror_url1 + str2;
     var clone_utl2 = str1 + mirror_url2 + str2;
     var str3 = window.location.pathname;
