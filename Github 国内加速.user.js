@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.1.2
+// @version      1.1.3
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
