@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.1.2
+// @version      1.1.3
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
@@ -38,7 +38,8 @@
     }
 
     var a = location.split("/");
-    var str2 = "/" + a[3] + "/" + a[4] + ".git";
+    var b = a[5] === "wiki" ? ".wiki" : "";
+    var str2 = "/" + a[3] + "/" + a[4] + b + ".git";
     var clone_utl1 = str1 + mirror_url1 + str2;
     var clone_utl2 = str1 + mirror_url2 + str2;
     var str3 = window.location.pathname;
