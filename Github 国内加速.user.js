@@ -12,6 +12,10 @@
 // @grant        GM_addStyle
 // @grant        GM_setClipboard
 // @grant        GM_getResourceText
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_registerMenuCommand
+// @grant        GM_openInTab
 // ==/UserScript==
 
 (function() {
@@ -19,9 +23,7 @@
     // var clone = false;
     var depth = true;
     // var depth = false;
-    var mirror = true;
-    // var mirror = false;
-    var hide = false;
+    var hide = true;
 
     var location = window.location.href;
     var mirror_url1 = "https://" + "github.com.cnpmjs.org";
@@ -52,7 +54,7 @@
     <div class="collapse multi-collapse" id="collapse">
     <div class="user-card user-card-body">
     <div class="user-alert user-alert-warning" role="alert">clone、depth命令的插入可手动编辑代码关闭</div>
-    <div class="user-alert user-alert-danger" style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;" role="alert">镜像地址请不要登陆自己的账户，造成损失本人概不负责</div>
+    <div class="user-alert user-alert-danger" role="alert">镜像地址请不要登陆自己的账户，造成损失本人概不负责</div>
     <div class="user-input-group user-mb-3">
     <div class="user-input-group-prepend"><span class="user-input-group-text" id="inputGroup-sizing-default">快速克隆1:</span></div>
     <input id="clone_case_1" type="text" value="${clone_utl1}" data-autoselect="" class="user-form-control" aria-label="将此存储库克隆到 ${clone_utl1}" readonly aria-describedby="inputGroup-sizing-default">
@@ -101,7 +103,7 @@
             $(this).after(div1);
         });
     });
-    $(".get-repo-modal.dropdown-menu ul li:last").each(function () {
+    $(".dropdown-menu .list-style-none li:last").each(function () {
         var url1 = mirror_url3 +"/"+a[3]+"/"+a[4]+ "/archive/master.zip";
         var span1 = `<li class="Box-row Box-row--hover-gray p-0"><a class="d-flex flex-items-center text-gray-dark text-bold no-underline p-3" rel="nofollow" href="${url1}">Fast Download ZIP</a></li>`;
 
@@ -135,11 +137,24 @@
         }
         hide = !hide;
     })
-    function init(){
-        if (!mirror) {
+    function mirrorBtnEvent(){
+        if (!GM_getValue('mirror')) {
             $("#collapse").hide()
+        }else{
+            $("#collapse").show();
         }
     }
+    function menuHideMirrorCollapse(){
+        GM_setValue('mirror',!GM_getValue('mirror'))
+        mirrorBtnEvent()
+        console.log(GM_getValue('mirror'))
+    }
+    function init(){
+        mirrorBtnEvent()
+    }
+    // 注册菜单
+    GM_registerMenuCommand(`【🔔隐藏 & 显示镜像信息面板】`,menuHideMirrorCollapse)
+    GM_registerMenuCommand(`【📢意见 & 反馈】`,function () {window.GM_openInTab('https://github.com/jadezi/github-accelerator/issues/new', {active: true,insert: true,setParent: true});})
     // 初始化面板
     init()
     GM_addStyle(GM_getResourceText("mycss"));
