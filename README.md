@@ -4,6 +4,12 @@
 
 本脚本在 [GitHub 镜像加速下载](https://greasyfork.org/zh-CN/scripts/397419-github-%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD) 脚本的基础上做了些修改。
 
+## v1.1.4
+
+- 添加脚本菜单
+- 允许全局设置镜像按钮显示及隐藏
+- 适配Github夜间模式
+
 ## v1.1.3
 
 - 适配仓库的 wiki 页面
