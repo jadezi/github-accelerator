@@ -2,7 +2,7 @@
 // @icon         https://github.githubassets.com/favicon.ico
 // @name         Github 镜像访问，加速下载
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      1.1.4
+// @version      1.1.5
 // @description  GitHub 镜像，github 加速
 // @author       jadezi
 // @license      GPL License
@@ -48,6 +48,7 @@
     var web_url1 = mirror_url1 + str3;
     var web_url2 = mirror_url2 + str3;
     var web_url3 = mirror_url3 + str3;
+    // 镜像面板代码
     var info = `
     <div class="user-ment">
     <button class="btn btn-primary" type="button" id="mirror-btn">镜像网址</button>
@@ -86,27 +87,22 @@
 
     $(".repository-content").prepend(info);
     $(".Box.Box--condensed").each(function () {
-        $(this).find(".d-flex.Box-body>a").each(function () {
-            var href = $(this).attr("href");
+        // 修改源代码下载栏样式
+        $(this).find(".d-block.py-1.py-md-2.Box-body.px-2").addClass("d-flex flex-justify-between")
+        // 修改文件大小对齐方式
+        $(".pl-2.color-text-secondary.flex-shrink-0").css({"display":"flex","flex-grow":1,"justify-content":"flex-end"})
+        $(this).find(".d-flex.Box-body").each(function () {
+            var href = $(this).children("a").attr("href");
             var url1 = download_url1 + href;
             var url2 = mirror_url3 + href;
-            var div1 = `<div class="user_download" style="display: flex;justify-content: flex-end;flex-grow: 1;"><div><a style="padding:4px;"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
-
-            $(this).after(div1);
-        });
-        $(this).find(".d-block.Box-body>a").each(function () {
-            var href = $(this).attr("href");
-            var url1 = download_url1 + href;
-            var url2 = mirror_url3 + href;
-            var div1 = `<div class="user_download" style="display: flex;"><div><a style="padding:4px;"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
-
-            $(this).after(div1);
+            var div1 = `<div class="user_download" style="display: flex;justify-content: flex-end;margin-left:9px"><div><a style="padding:4px;"  class="btn user-btn-link"  href="${url1}" rel="nofollow">快速下载1</a></div><div><a style="padding:4px"   class="btn user-btn-link" href="${url2}" rel="nofollow">快速下载2(推荐)</a></div></div>`
+            $(this).append(div1);
         });
     });
+    // Fast download下载按钮
     $(".dropdown-menu .list-style-none li:last").each(function () {
         var url1 = mirror_url3 +"/"+a[3]+"/"+a[4]+ "/archive/master.zip";
         var span1 = `<li class="Box-row Box-row--hover-gray p-0"><a class="d-flex flex-items-center text-gray-dark text-bold no-underline p-3" rel="nofollow" href="${url1}">Fast Download ZIP</a></li>`;
-
         $(this).after(span1);
     });
     // 复制按钮
