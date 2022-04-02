@@ -2,7 +2,7 @@
 // @name         Github 镜像访问，加速下载
 // @icon         https://github.githubassets.com/favicon.ico
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      2.0.1
+// @version      2.0.2
 // @description  GitHub 镜像，github 加速
 // @author       jadezi、wuyuehui
 // @license      GPL License
@@ -177,15 +177,19 @@
         $(".Box .Box-footer").each(function () {
             $(this).find("li.Box-row").each(function () {
                 const href = $(this).find("a")[0].href
+                const li_obj= $(this)
                 const download_url1 = `${download_url[0]}/${href}`
                 const download_url2 = `${download_url[1]}/${href}`
                 let download_template = `
-                <div class="mt-1" style="display: flex; justify-content: flex-end;">
+                <div class="mt-1" style="display: flex; float: right;position: relative;top: -10px;left: 10px;">
                     <a class="btn btn-sm mr-1" href="${download_url1}" rel="nofollow">快速下载1</a>
                     <a class="btn btn-sm" href="${download_url2}" rel="nofollow">快速下载2</a>
                 </div>
                 `
-                $(this).append(download_template);
+                li_obj.children('span.float-right').before(download_template);
+                if(li_obj.children('span.float-right').length<1){
+                    li_obj.children('a').before(download_template);
+                }
             });
         });
     }
