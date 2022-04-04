@@ -2,7 +2,7 @@
 // @name         Github 镜像访问，加速下载
 // @icon         https://github.githubassets.com/favicon.ico
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      2.0.2
+// @version      2.0.3
 // @description  GitHub 镜像，github 加速
 // @author       jadezi、wuyuehui
 // @license      GPL License
@@ -100,7 +100,7 @@
                         aria-label="${clone_url}">
                     <div class="input-group-button">
                         <clipboard-copy value="${clone_url}" aria-label="Copy to clipboard"
-                            class="btn js-clipboard-copy ClipboardButton" data-copy-feedback="Copied!" role="button">
+                            class="btn js-clipboard-copy ClipboardButton" data-copy-feedback="Copied!" role="button" style="border-left:0;border-radius:0">
                             复制
                         </clipboard-copy>
                     </div>
@@ -204,6 +204,7 @@
         }
         GM_setValue('panelVisible', !currentPanelVisible)
     }
+
 
     // 注册菜单
     GM_registerMenuCommand(`【🔔显示 & 隐藏 - 镜像信息面板】`, togglePanelVisible)
