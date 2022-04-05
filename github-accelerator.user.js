@@ -2,11 +2,12 @@
 // @name         Github 镜像访问，加速下载
 // @icon         https://github.githubassets.com/favicon.ico
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      2.0.3
+// @version      2.0.4
 // @description  GitHub 镜像，github 加速
 // @author       jadezi、wuyuehui
 // @license      GPL License
 // @match        *://github.com/*
+// @match        *://hub.fastgit.xyz/*
 // @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @resource     customStyles https://gitee.com/jadezi/github-accelerator-css/raw/master/index.css
 // @grant        GM_addStyle
@@ -41,9 +42,19 @@
 
     function init() {
         initMirrorUrl()
-        addPanel()
+        isProjectUrl()
         setTimeout(addDownload, 2000);
         addRelease()
+    }
+
+    // Project页面不添加镜像面板
+    function isProjectUrl(){
+        const pathnameArr = window.location.pathname.split('/');
+        if(pathnameArr.length>3&&pathnameArr[3]=="projects"){
+            return
+        }else{
+            addPanel()
+        }
     }
 
     // 初始化镜像地址
@@ -205,8 +216,19 @@
         GM_setValue('panelVisible', !currentPanelVisible)
     }
 
+    //
+    function toggleDepthVisible() {
+        const currentDepthVisible = GM_getValue('depthVisible')
+        if (currentDepthVisible === true) {
+            $("#collapse").hide();
+        } else {
+            $("#collapse").show();
+        }
+        GM_setValue('depthVisible', !currentDepthVisible)
+    }
 
     // 注册菜单
+    GM_registerMenuCommand(`【🧲开启 & 关闭 - depth】`, toggleDepthVisible)
     GM_registerMenuCommand(`【🔔显示 & 隐藏 - 镜像信息面板】`, togglePanelVisible)
     GM_registerMenuCommand(`【📢意见 & 反馈】`, () => { window.GM_openInTab('https://github.com/jadezi/github-accelerator/issues/new', { active: true, insert: true, setParent: true }); })
 
