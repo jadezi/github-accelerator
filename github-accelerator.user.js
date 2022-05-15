@@ -179,7 +179,7 @@
         })
 
         download_template_list.forEach(template => {
-            $(".dropdown-menu.dropdown-menu-sw.p-0 ul").append(template)
+            $("#local-panel ul").append(template)
         });
     }
 
