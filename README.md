@@ -6,12 +6,11 @@
 
 ## v2.0.5
 
--修复**code**面板 Fast Download 异常
+- 修复**code**面板 Fast Download 异常
 
 ## v2.0.4
 
 - 解决镜像面板按钮影响Projects内容完全显示[#issue12](https://github.com/jadezi/github-accelerator/issues/12)
-
 ## v2.0.3
 
 - 调整按钮css样式
