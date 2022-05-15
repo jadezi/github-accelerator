@@ -2,13 +2,13 @@
 // @name         Github 镜像访问，加速下载
 // @icon         https://github.githubassets.com/favicon.ico
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      2.0.5
+// @version      2.0.6
 // @description  GitHub 镜像，github 加速
 // @author       jadezi、wuyuehui
 // @license      GPL License
 // @match        *://github.com/*
 // @match        *://hub.fastgit.xyz/*
-// @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
+// @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js
 // @resource     customStyles https://gitee.com/jadezi/github-accelerator-css/raw/master/index.css
 // @grant        GM_addStyle
 // @grant        GM_setClipboard
