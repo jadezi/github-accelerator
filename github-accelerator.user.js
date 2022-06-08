@@ -226,7 +226,12 @@
         GM_setValue('depthVisible', !currentDepthVisible)
     }
 
+    function openWithBrowser() {
+        const uu = window.location.href.replace("github.com","github1s.com");
+        window.open(uu,'_blank')
+    }
     // 注册菜单
+    GM_registerMenuCommand(`【浏览器快开】`, openWithBrowser)
     GM_registerMenuCommand(`【🧲开启 & 关闭 - depth】`, toggleDepthVisible)
     GM_registerMenuCommand(`【🔔显示 & 隐藏 - 镜像信息面板】`, togglePanelVisible)
     GM_registerMenuCommand(`【📢意见 & 反馈】`, () => { window.GM_openInTab('https://github.com/jadezi/github-accelerator/issues/new', { active: true, insert: true, setParent: true }); })
