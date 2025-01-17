@@ -2,7 +2,7 @@
 // @name         Github 镜像访问，加速下载
 // @icon         https://github.githubassets.com/favicon.ico
 // @namespace    https://github.com/jadezi/github-accelerator/
-// @version      2.0.8
+// @version      2.0.9
 // @description  GitHub 镜像，github 加速
 // @author       jadezi、wuyuehui
 // @license      GPL License
@@ -22,21 +22,17 @@
     const clone_url_list = [
         {
             name: '地址1',
-            url: 'https://hub.fastgit.xyz',
+            url: 'https://kkgithub.com',
         },
         {
             name: '地址2',
-            url: 'https://hub.0z.gs',
-        },
-        {
-            name: '地址3',
-            url: 'https://api.mtr.pub',
+            url: 'https://github.xiaohei.me',
         },
     ]
 
     const download_url = [
-        'https://mirror.ghproxy.com',
-        'https://gh-proxy.du33169.workers.dev',
+        'https://ghp.ci/',
+        'https://github.moeyy.xyz/',
     ]
 
     function init() {
@@ -92,7 +88,6 @@
             </div>
             <div class="collapse multi-collapse" id="collapse">
                 <div class="user-card user-card-body">
-                    <div class="user-alert user-alert-warning" role="alert">clone、depth命令的插入可手动编辑代码关闭</div>
                     <div class="user-alert user-alert-danger" role="alert">镜像地址请不要登陆自己的账户，造成损失本人概不负责</div>
                     <!-- 插入克隆模板列表位置 -->
                 </div>
@@ -158,12 +153,13 @@
     }
 
     // Download ZIP
+    // 功能已失效，等我有空了再来修复
     function addDownload() {
         const clone_url_list = GM_getValue('clone_url_list')
 
         const get_download_template = (mirrorItem, index) => {
             const { quick_look_url } = mirrorItem
-            let download_url = quick_look_url + "/archive/master.zip";
+            let download_url = quick_look_url + "archive/refs/heads/master.zip";
             return `
             <li class="Box-row Box-row--hover-gray p-3 mt-0">
                 <a class="d-flex flex-items-center color-fg-default text-bold no-underline" href=${download_url}>
@@ -178,28 +174,26 @@
         })
 
         download_template_list.forEach(template => {
-            $("#local-panel ul").append(template)
+            $("#__primerPortalRoot__ > div > div > ul > div > ul").append(template)
         });
     }
 
-    // Release
+    // Release 
+    // 功能已失效，等我有空了再来修复
     function addRelease() {
-        $(".Box .Box-footer").each(function () {
+        $(".Box.Box--condensed.mt-3").each(function () {
             $(this).find("li.Box-row").each(function () {
                 const href = $(this).find("a")[0].href
                 const li_obj= $(this)
                 const download_url1 = `${download_url[0]}/${href}`
                 const download_url2 = `${download_url[1]}/${href}`
                 let download_template = `
-                <div class="mt-1" style="display: flex; float: right;position: relative;top: -10px;left: 10px;">
-                    <a class="btn btn-sm mr-1" href="${download_url1}" rel="nofollow">快速下载1</a>
+                <div class="mt-1" style="height:17.5px;position: relative;top: -4px;left: 10px;margin-top:0px !important">
+                    <a class="btn btn-sm mr-1" style="line-height:17.5px" href="${download_url1}" rel="nofollow">快速下载1</a>
                     <a class="btn btn-sm" href="${download_url2}" rel="nofollow">快速下载2</a>
                 </div>
                 `
-                li_obj.children('span.float-right').before(download_template);
-                if(li_obj.children('span.float-right').length<1){
-                    li_obj.children('a').before(download_template);
-                }
+                li_obj.find("#repo-content-pjax-container > div:nth-child(2) > div > div > div.Box-footer > div.mb-3 > details > div > div > ul > li:nth-child(2) > div.d-flex.flex-justify-start.col-12.col-lg-9").children().eq(0).before(download_template)
             });
         });
     }
@@ -215,19 +209,9 @@
         GM_setValue('panelVisible', !currentPanelVisible)
     }
 
-    //
-    function toggleDepthVisible() {
-        const currentDepthVisible = GM_getValue('depthVisible')
-        if (currentDepthVisible === true) {
-            $("#collapse").hide();
-        } else {
-            $("#collapse").show();
-        }
-        GM_setValue('depthVisible', !currentDepthVisible)
-    }
 
     // 注册菜单
-    GM_registerMenuCommand(`【🧲开启 & 关闭 - depth】`, toggleDepthVisible)
+    // GM_registerMenuCommand(`【🧲开启 & 关闭 - depth】`, toggleDepthVisible)
     GM_registerMenuCommand(`【🔔显示 & 隐藏 - 镜像信息面板】`, togglePanelVisible)
     GM_registerMenuCommand(`【📢意见 & 反馈】`, () => { window.GM_openInTab('https://github.com/jadezi/github-accelerator/issues/new', { active: true, insert: true, setParent: true }); })
 
