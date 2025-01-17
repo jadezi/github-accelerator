@@ -7,7 +7,7 @@
 // @author       jadezi、wuyuehui
 // @license      GPL License
 // @match        *://github.com/*
-// @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js
+// @require      https://code.jquery.com/jquery-3.4.1.min.js
 // @resource     customStyles https://gitee.com/jadezi/github-accelerator-css/raw/master/index.css
 // @grant        GM_addStyle
 // @grant        GM_setClipboard
